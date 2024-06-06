@@ -1,0 +1,336 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.82 build 9453 
+                                                                                               Thu Jun 06 13:17:31 2024
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 9453
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 9453"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           # 11 "C:\Users\Naim\Documents\BOOK PROJECT\PIC PROGRAMMS\PIC16F877A LED Blinking\Code\Ma
+                                 in.c"
+    43                           	psect config,class=CONFIG,delta=2 ;#
+    44                           # 11 "C:\Users\Naim\Documents\BOOK PROJECT\PIC PROGRAMMS\PIC16F877A LED Blinking\Code\Ma
+                                 in.c"
+    45  2007  FF72               	dw 0xFFFE & 0xFFFB & 0xFFF7 & 0xFFFF & 0xFFFF & 0xFF7F & 0xFFFF & 0xFFFF & 0xFFFF ;#
+    46                           	FNROOT	_main
+    47                           	global	_CARRY
+    48                           psect	maintext,global,class=CODE,delta=2
+    49                           global __pmaintext
+    50  07D4                     __pmaintext:
+    51  0018                     _CARRY	set	24
+    52                           	global	_GIE
+    53  005F                     _GIE	set	95
+    54                           	global	_RB0
+    55  0030                     _RB0	set	48
+    56                           	global	_TRISB0
+    57  0430                     _TRISB0	set	1072
+    58                           	global	_EEADR
+    59  010D                     _EEADR	set	269
+    60                           	global	_EEDATA
+    61  010C                     _EEDATA	set	268
+    62                           	global	_EECON1
+    63  018C                     _EECON1	set	396
+    64                           	global	_EECON2
+    65  018D                     _EECON2	set	397
+    66                           	global	_RD
+    67  0C60                     _RD	set	3168
+    68                           	global	_WR
+    69  0C61                     _WR	set	3169
+    70                           	global	_WREN
+    71  0C62                     _WREN	set	3170
+    72                           	file	"C:\Users\Naim\AppData\Local\Temp\s5ik."
+    73                           	line	#
+    74                           psect cinit,class=CODE,delta=2
+    75                           global start_initialization
+    76  07D0                     start_initialization:
+    77                           
+    78                           psect cinit,class=CODE,delta=2
+    79                           global end_of_initialization
+    80                           
+    81                           ;End of C runtime variable initialization code
+    82                           
+    83  07D0                     end_of_initialization:
+    84  07D0  0183               clrf status
+    85  07D1  120A  118A  2FD4   ljmp _main	;jump to C main() function
+    86                           psect	cstackCOMMON,class=COMMON,space=1
+    87                           global __pcstackCOMMON
+    88  0070                     __pcstackCOMMON:
+    89                           	global	?_main
+    90  0070                     ?_main:	; 0 bytes @ 0x0
+    91                           	global	??_main
+    92  0070                     ??_main:	; 0 bytes @ 0x0
+    93  0070                     	ds	3
+    94 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 0 stack 0
+    95 ;;Auto spaces:   Size  Autos    Used
+    96 ;; COMMON          14      3       3
+    97 ;; BANK0           80      0       0
+    98 ;; BANK1           80      0       0
+    99 ;; BANK3           96      0       0
+   100 ;; BANK2           96      0       0
+   101                           
+   102 ;;
+   103 ;; Pointer list with targets:
+   104                           
+   105                           
+   106                           
+   107 ;;
+   108 ;; Critical Paths under _main in COMMON
+   109 ;;
+   110 ;;   None.
+   111 ;;
+   112 ;; Critical Paths under _main in BANK0
+   113 ;;
+   114 ;;   None.
+   115 ;;
+   116 ;; Critical Paths under _main in BANK1
+   117 ;;
+   118 ;;   None.
+   119 ;;
+   120 ;; Critical Paths under _main in BANK3
+   121 ;;
+   122 ;;   None.
+   123 ;;
+   124 ;; Critical Paths under _main in BANK2
+   125 ;;
+   126 ;;   None.
+   127                           
+   128 ;;
+   129 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
+   130 ;;
+   131                           
+   132 ;;
+   133 ;;Call Graph Tables:
+   134 ;;
+   135 ;; ---------------------------------------------------------------------------------
+   136 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   137 ;; ---------------------------------------------------------------------------------
+   138 ;; (0) _main                                                 3     3      0       0
+   139 ;;                                              0 COMMON     3     3      0
+   140 ;; ---------------------------------------------------------------------------------
+   141 ;; Estimated maximum stack depth 0
+   142 ;; ---------------------------------------------------------------------------------
+   143                           
+   144 ;; Call Graph Graphs:
+   145                           
+   146 ;; _main (ROOT)
+   147 ;;
+   148                           
+   149 ;; Address spaces:
+   150                           
+   151 ;;Name               Size   Autos  Total    Cost      Usage
+   152 ;;BITCOMMON            E      0       0       0        0.0%
+   153 ;;EEDATA             100      0       0       0        0.0%
+   154 ;;NULL                 0      0       0       0        0.0%
+   155 ;;CODE                 0      0       0       0        0.0%
+   156 ;;COMMON               E      3       3       1       21.4%
+   157 ;;BITSFR0              0      0       0       1        0.0%
+   158 ;;SFR0                 0      0       0       1        0.0%
+   159 ;;BITSFR1              0      0       0       2        0.0%
+   160 ;;SFR1                 0      0       0       2        0.0%
+   161 ;;STACK                0      0       0       2        0.0%
+   162 ;;ABS                  0      0       0       3        0.0%
+   163 ;;BITBANK0            50      0       0       4        0.0%
+   164 ;;BITSFR3              0      0       0       4        0.0%
+   165 ;;SFR3                 0      0       0       4        0.0%
+   166 ;;BANK0               50      0       0       5        0.0%
+   167 ;;BITSFR2              0      0       0       5        0.0%
+   168 ;;SFR2                 0      0       0       5        0.0%
+   169 ;;BITBANK1            50      0       0       6        0.0%
+   170 ;;BANK1               50      0       0       7        0.0%
+   171 ;;BITBANK3            60      0       0       8        0.0%
+   172 ;;BANK3               60      0       0       9        0.0%
+   173 ;;BITBANK2            60      0       0      10        0.0%
+   174 ;;BANK2               60      0       0      11        0.0%
+   175 ;;DATA                 0      0       0      12        0.0%
+   176                           
+   177                           	global	_main
+   178                           psect	maintext
+   179                           
+   180 ;; *************** function _main *****************
+   181 ;; Defined at:
+   182 ;;		line 24 in file "C:\Users\Naim\Documents\BOOK PROJECT\PIC PROGRAMMS\PIC16F877A LED Blinking\Code\Main.c"
+   183 ;; Parameters:    Size  Location     Type
+   184 ;;		None
+   185 ;; Auto vars:     Size  Location     Type
+   186 ;;		None
+   187 ;; Return value:  Size  Location     Type
+   188 ;;		None               void
+   189 ;; Registers used:
+   190 ;;		wreg
+   191 ;; Tracked objects:
+   192 ;;		On entry : 17F/0
+   193 ;;		On exit  : 0/0
+   194 ;;		Unchanged: 0/0
+   195 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   196 ;;      Params:         0       0       0       0       0
+   197 ;;      Locals:         0       0       0       0       0
+   198 ;;      Temps:          3       0       0       0       0
+   199 ;;      Totals:         3       0       0       0       0
+   200 ;;Total ram usage:        3 bytes
+   201 ;; This function calls:
+   202 ;;		Nothing
+   203 ;; This function is called by:
+   204 ;;		Startup code after reset
+   205 ;; This function uses a non-reentrant model
+   206 ;;
+   207                           psect	maintext
+   208                           	file	"C:\Users\Naim\Documents\BOOK PROJECT\PIC PROGRAMMS\PIC16F877A LED Blinking\Code\M
+                                 ain.c"
+   209                           	line	24
+   210                           	global	__size_of_main
+   211  002C                     	__size_of_main	equ	__end_of_main-_main
+   212                           	
+   213  07D4                     _main:	
+   214                           	opt	stack 8
+   215                           ; Regs used in _main: [wreg]
+   216                           	line	25
+   217                           	
+   218  07D4                     l2595:	
+   219                           ;Main.c: 25: TRISB0 = 0;
+   220  07D4  1683               	bsf	status, 5	;RP0=1, select bank1
+   221  07D5  1303               	bcf	status, 6	;RP1=0, select bank1
+   222  07D6  1006               	bcf	(1072/8)^080h,(1072)&7
+   223                           	line	26
+   224                           ;Main.c: 26: RB0 = 0;
+   225  07D7  1283               	bcf	status, 5	;RP0=0, select bank0
+   226  07D8  1303               	bcf	status, 6	;RP1=0, select bank0
+   227  07D9  1006               	bcf	(48/8),(48)&7
+   228  07DA  2FDB               	goto	l2597
+   229                           	line	28
+   230                           ;Main.c: 28: while(1)
+   231                           	
+   232  07DB                     l687:	
+   233                           	line	30
+   234                           	
+   235  07DB                     l2597:	
+   236                           ;Main.c: 29: {
+   237                           ;Main.c: 30: _delay((unsigned long)((500)*(20000000/4000.0)));
+   238                           	opt asmopt_off
+   239  07DB  300D               movlw  13
+   240  07DC  00F2               movwf	((??_main+0)+0+2),f
+   241  07DD  30AF               movlw	175
+   242  07DE  00F1               movwf	((??_main+0)+0+1),f
+   243  07DF  30C1               	movlw	193
+   244  07E0  00F0               movwf	((??_main+0)+0),f
+   245  07E1                     u2227:
+   246  07E1  0BF0               	decfsz	((??_main+0)+0),f
+   247  07E2  2FE1               	goto	u2227
+   248  07E3  0BF1               	decfsz	((??_main+0)+0+1),f
+   249  07E4  2FE1               	goto	u2227
+   250  07E5  0BF2               	decfsz	((??_main+0)+0+2),f
+   251  07E6  2FE1               	goto	u2227
+   252  07E7  0064               	clrwdt
+   253                           opt asmopt_on
+   254                           
+   255                           	line	31
+   256                           	
+   257  07E8                     l2599:	
+   258                           ;Main.c: 31: RB0 = 0;
+   259  07E8  1283               	bcf	status, 5	;RP0=0, select bank0
+   260  07E9  1303               	bcf	status, 6	;RP1=0, select bank0
+   261  07EA  1006               	bcf	(48/8),(48)&7
+   262                           	line	32
+   263                           ;Main.c: 32: _delay((unsigned long)((500)*(20000000/4000.0)));
+   264                           	opt asmopt_off
+   265  07EB  300D               movlw  13
+   266  07EC  00F2               movwf	((??_main+0)+0+2),f
+   267  07ED  30AF               movlw	175
+   268  07EE  00F1               movwf	((??_main+0)+0+1),f
+   269  07EF  30C1               	movlw	193
+   270  07F0  00F0               movwf	((??_main+0)+0),f
+   271  07F1                     u2237:
+   272  07F1  0BF0               	decfsz	((??_main+0)+0),f
+   273  07F2  2FF1               	goto	u2237
+   274  07F3  0BF1               	decfsz	((??_main+0)+0+1),f
+   275  07F4  2FF1               	goto	u2237
+   276  07F5  0BF2               	decfsz	((??_main+0)+0+2),f
+   277  07F6  2FF1               	goto	u2237
+   278  07F7  0064               	clrwdt
+   279                           opt asmopt_on
+   280                           
+   281                           	line	33
+   282                           	
+   283  07F8                     l2601:	
+   284                           ;Main.c: 33: RB0 = 1;
+   285  07F8  1283               	bcf	status, 5	;RP0=0, select bank0
+   286  07F9  1303               	bcf	status, 6	;RP1=0, select bank0
+   287  07FA  1406               	bsf	(48/8),(48)&7
+   288  07FB  2FDB               	goto	l2597
+   289                           	line	34
+   290                           	
+   291  07FC                     l688:	
+   292                           	line	28
+   293  07FC  2FDB               	goto	l2597
+   294                           	
+   295  07FD                     l689:	
+   296                           	line	35
+   297                           	
+   298  07FD                     l690:	
+   299                           	global	start
+   300  07FD  120A  118A  2800   	ljmp	start
+   301                           	opt stack 0
+   302                           GLOBAL	__end_of_main
+   303  0800                     	__end_of_main:
+   304 ;; =============== function _main ends ============
+   305                           
+   306                           	signat	_main,88
+   307                           psect	maintext
+   308                           	global	btemp
+   309  007E                     	btemp set 07Eh
+   310                           
+   311                           	DABS	1,126,2	;btemp
+   312                           	global	wtemp0
+   313  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.82 build 9453 
+Symbol Table                                                                                   Thu Jun 06 13:17:31 2024
+
+                  _RD 0C60                    _WR 0C61                   l690 07FD                   l687 07DB  
+                 l688 07FC                   l689 07FD                   _GIE 005F                   _RB0 0030  
+                l2601 07F8                  l2595 07D4                  l2597 07DB                  l2599 07E8  
+                u2227 07E1                  u2237 07F1                  _WREN 0C62                  _main 07D4  
+                btemp 007E                  start 0000                 ?_main 0070                 _EEADR 010D  
+               _CARRY 0018                 status 0003                 wtemp0 007E          __end_of_main 0800  
+              ??_main 0070                _EEDATA 010C                _EECON1 018C                _EECON2 018D  
+              _TRISB0 0430        __pcstackCOMMON 0070            __pmaintext 07D4  end_of_initialization 07D0  
+ start_initialization 07D0         __size_of_main 002C  
