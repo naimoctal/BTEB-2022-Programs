@@ -1,0 +1,542 @@
+
+
+HI-TECH Software PIC PRO Macro Assembler V9.83 build 10920 
+                                                                                               Sat Jan 23 19:03:20 2016
+
+HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
+     1                           	processor	16F877A
+     2                           	opt	pw 120
+     3                           	opt	pm
+     4                           	psect	config,global,class=CONFIG,delta=2
+     5                           	psect	text35,local,class=CODE,delta=2
+     6                           	psect	cinit,global,class=CODE,delta=2
+     7                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+     8                           	psect	maintext,global,class=CODE,delta=2
+     9                           	psect	text36,local,class=CODE,delta=2
+    10                           	psect	text37,local,class=CODE,delta=2
+    11                           	psect	pa_nodes,global,class=CODE,delta=2
+    12                           	dabs	1,0x7E,2
+    13  000A                     	;#
+    14                           
+    15                           	psect	config
+    16  2007  FF72               	dw	65394	;#
+    17                           
+    18                           	psect	text35
+    19  0000                     __ptext35:	
+    20  0006                     _PORTB	set	6
+    21  0086                     _TRISB	set	134
+    22                           
+    23                           	psect	cinit
+    24  0715                     start_initialization:	
+    25  0715                     end_of_initialization:	
+    26                           ;End of C runtime variable initialization code
+    27                           
+    28  0715  0183               	clrf	3
+    29  0716  120A  118A  2F19   	ljmp	_main	;jump to C main() function
+    30                           
+    31                           	psect	cstackCOMMON
+    32  0070                     __pcstackCOMMON:	
+    33  0070                     ?_DisplayOn7Segment:	
+    34  0070                     ??_DisplayOn7Segment:	
+    35                           ; 0 bytes @ 0x0
+    36                           
+    37  0070                     ?_main:	
+    38                           ; 0 bytes @ 0x0
+    39                           
+    40  0070                     DisplayOn7Segment@ch:	
+    41                           ; 0 bytes @ 0x0
+    42                           
+    43                           
+    44                           ; 1 bytes @ 0x0
+    45  0070                     	ds	1
+    46  0071                     ??_main:	
+    47                           
+    48                           ; 0 bytes @ 0x1
+    49  0071                     	ds	3
+    50  0074                     main@ch:	
+    51                           
+    52                           ; 1 bytes @ 0x4
+    53  0074                     	ds	1
+    54                           
+    55                           	psect	maintext
+    56  0719                     __pmaintext:	
+    57 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 0 stack 0
+    58 ;;Auto spaces:   Size  Autos    Used
+    59 ;; COMMON          14      5       5
+    60 ;; BANK0           80      0       0
+    61 ;; BANK1           80      0       0
+    62 ;; BANK3           96      0       0
+    63 ;; BANK2           96      0       0
+    64 ;;
+    65 ;; Pointer list with targets:
+    66 ;;
+    67 ;; Critical Paths under _main in COMMON
+    68 ;;
+    69 ;;   _main->_DisplayOn7Segment
+    70 ;;
+    71 ;; Critical Paths under _main in BANK0
+    72 ;;
+    73 ;;   None.
+    74 ;;
+    75 ;; Critical Paths under _main in BANK1
+    76 ;;
+    77 ;;   None.
+    78 ;;
+    79 ;; Critical Paths under _main in BANK3
+    80 ;;
+    81 ;;   None.
+    82 ;;
+    83 ;; Critical Paths under _main in BANK2
+    84 ;;
+    85 ;;   None.
+    86 ;;
+    87 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
+    88 ;;
+    89 ;;
+    90 ;;Call Graph Tables:
+    91 ;;
+    92 ;; ---------------------------------------------------------------------------------
+    93 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+    94 ;; ---------------------------------------------------------------------------------
+    95 ;; (0) _main                                                 4     4      0      45
+    96 ;;                                              1 COMMON     4     4      0
+    97 ;;                  _DisplayOn7Segment
+    98 ;; ---------------------------------------------------------------------------------
+    99 ;; (1) _DisplayOn7Segment                                    1     1      0      15
+   100 ;;                                              0 COMMON     1     1      0
+   101 ;; ---------------------------------------------------------------------------------
+   102 ;; Estimated maximum stack depth 1
+   103 ;; ---------------------------------------------------------------------------------
+   104 ;; Call Graph Graphs:
+   105 ;; _main (ROOT)
+   106 ;;   _DisplayOn7Segment
+   107 ;;
+   108 ;; Address spaces:
+   109 ;;Name               Size   Autos  Total    Cost      Usage
+   110 ;;BITCOMMON            E      0       0       0        0.0%
+   111 ;;EEDATA             100      0       0       0        0.0%
+   112 ;;NULL                 0      0       0       0        0.0%
+   113 ;;CODE                 0      0       0       0        0.0%
+   114 ;;COMMON               E      5       5       1       35.7%
+   115 ;;BITSFR0              0      0       0       1        0.0%
+   116 ;;SFR0                 0      0       0       1        0.0%
+   117 ;;BITSFR1              0      0       0       2        0.0%
+   118 ;;SFR1                 0      0       0       2        0.0%
+   119 ;;STACK                0      0       1       2        0.0%
+   120 ;;ABS                  0      0       0       3        0.0%
+   121 ;;BITBANK0            50      0       0       4        0.0%
+   122 ;;BITSFR3              0      0       0       4        0.0%
+   123 ;;SFR3                 0      0       0       4        0.0%
+   124 ;;BANK0               50      0       0       5        0.0%
+   125 ;;BITSFR2              0      0       0       5        0.0%
+   126 ;;SFR2                 0      0       0       5        0.0%
+   127 ;;BITBANK1            50      0       0       6        0.0%
+   128 ;;BANK1               50      0       0       7        0.0%
+   129 ;;BITBANK3            60      0       0       8        0.0%
+   130 ;;BANK3               60      0       0       9        0.0%
+   131 ;;BITBANK2            60      0       0      10        0.0%
+   132 ;;BANK2               60      0       0      11        0.0%
+   133 ;;DATA                 0      0       0      12        0.0%
+   134                           
+   135                           
+   136 ;; *************** function _main *****************
+   137 ;; Defined at:
+   138 ;;		line 60 in file "C:\Users\Saeed\Desktop\PIC16F877A Free Running Counter\Code\Main.c"
+   139 ;; Parameters:    Size  Location     Type
+   140 ;;		None
+   141 ;; Auto vars:     Size  Location     Type
+   142 ;;  ch              1    4[COMMON] unsigned char 
+   143 ;; Return value:  Size  Location     Type
+   144 ;;		None               void
+   145 ;; Registers used:
+   146 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   147 ;; Tracked objects:
+   148 ;;		On entry : 17F/0
+   149 ;;		On exit  : 0/0
+   150 ;;		Unchanged: 0/0
+   151 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   152 ;;      Params:         0       0       0       0       0
+   153 ;;      Locals:         1       0       0       0       0
+   154 ;;      Temps:          3       0       0       0       0
+   155 ;;      Totals:         4       0       0       0       0
+   156 ;;Total ram usage:        4 bytes
+   157 ;; Hardware stack levels required when called:    1
+   158 ;; This function calls:
+   159 ;;		_DisplayOn7Segment
+   160 ;; This function is called by:
+   161 ;;		Startup code after reset
+   162 ;; This function uses a non-reentrant model
+   163 ;;
+   164  0719                     _main:	
+   165                           
+   166                           ;Main.c: 61: char ch = '0';
+   167                           
+   168                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   169  0719  3030               	movlw	48
+   170  071A  00F4               	movwf	main@ch
+   171                           
+   172                           ;Main.c: 63: TRISB = 0x00;
+   173  071B  1683               	bsf	3,5	;RP0=1, select bank1
+   174  071C  0186               	clrf	6	;volatile
+   175                           
+   176                           ;Main.c: 64: PORTB = 0x00;
+   177  071D  1283               	bcf	3,5	;RP0=0, select bank0
+   178  071E  0186               	clrf	6	;volatile
+   179                           
+   180                           ;Main.c: 71: switch(ch)
+   181  071F  2F40               	goto	l1824
+   182  0720                     l1828:	
+   183  0720  3031               	movlw	49
+   184  0721  2F3F               	goto	L15
+   185  0722                     l1830:	
+   186  0722  3032               	movlw	50
+   187  0723  2F3F               	goto	L15
+   188  0724                     l1832:	
+   189  0724  3033               	movlw	51
+   190  0725  2F3F               	goto	L15
+   191  0726                     l1834:	
+   192  0726  3034               	movlw	52
+   193  0727  2F3F               	goto	L15
+   194  0728                     l1836:	
+   195  0728  3035               	movlw	53
+   196  0729  2F3F               	goto	L15
+   197  072A                     l1838:	
+   198  072A  3036               	movlw	54
+   199  072B  2F3F               	goto	L15
+   200  072C                     l1840:	
+   201  072C  3037               	movlw	55
+   202  072D  2F3F               	goto	L15
+   203  072E                     l1842:	
+   204  072E  3038               	movlw	56
+   205  072F  2F3F               	goto	L15
+   206  0730                     l1844:	
+   207  0730  3039               	movlw	57
+   208  0731  2F3F               	goto	L15
+   209  0732                     l1846:	
+   210  0732  3041               	movlw	65
+   211  0733  2F3F               	goto	L15
+   212  0734                     l1848:	
+   213  0734  3042               	movlw	66
+   214  0735  2F3F               	goto	L15
+   215  0736                     l1850:	
+   216  0736  3043               	movlw	67
+   217  0737  2F3F               	goto	L15
+   218  0738                     l1852:	
+   219  0738  3044               	movlw	68
+   220  0739  2F3F               	goto	L15
+   221  073A                     l1854:	
+   222  073A  3045               	movlw	69
+   223  073B  2F3F               	goto	L15
+   224  073C                     l1856:	
+   225  073C  3046               	movlw	70
+   226  073D  2F3F               	goto	L15
+   227  073E                     l1858:	
+   228  073E  3030               	movlw	48
+   229  073F                     L15:	
+   230  073F  00F4               	movwf	main@ch
+   231  0740                     l1824:	
+   232                           
+   233                           ;Main.c: 67: {
+   234                           ;Main.c: 68: DisplayOn7Segment(ch);
+   235  0740  0874               	movf	main@ch,w
+   236  0741  120A  118A  2788   	fcall	_DisplayOn7Segment
+      +       120A  118A         
+   237                           
+   238                           ;Main.c: 69: _delay((unsigned long)((1000)*(20000000/4000.0)));
+   239  0746  301A               	movlw	26
+   240  0747  00F3               	movwf	??_main+2
+   241  0748  305E               	movlw	94
+   242  0749  00F2               	movwf	??_main+1
+   243  074A  3086               	movlw	134
+   244  074B  00F1               	movwf	??_main
+   245  074C                     u17:	
+   246  074C  0BF1               	decfsz	??_main,f
+   247  074D  2F4C               	goto	u17
+   248  074E  0BF2               	decfsz	??_main+1,f
+   249  074F  2F4C               	goto	u17
+   250  0750  0BF3               	decfsz	??_main+2,f
+   251  0751  2F4C               	goto	u17
+   252  0752  0064               	clrwdt
+   253  0753  0874               	movf	main@ch,w
+   254                           
+   255                           ; Switch size 1, requested type "space"
+   256                           ; Number of cases is 16, Range of values is 48 to 70
+   257                           ; switch strategies available:
+   258                           ; Name         Instructions Cycles
+   259                           ; simple_byte           49    25 (average)
+   260                           ; direct_byte           80    11 (fixed)
+   261                           ; jumptable            263     9 (fixed)
+   262                           ;	Chosen strategy is simple_byte
+   263  0754  3A30               	xorlw	48	; case 48
+   264  0755  1903               	skipnz
+   265  0756  2F20               	goto	l1828
+   266  0757  3A01               	xorlw	1	; case 49
+   267  0758  1903               	skipnz
+   268  0759  2F22               	goto	l1830
+   269  075A  3A03               	xorlw	3	; case 50
+   270  075B  1903               	skipnz
+   271  075C  2F24               	goto	l1832
+   272  075D  3A01               	xorlw	1	; case 51
+   273  075E  1903               	skipnz
+   274  075F  2F26               	goto	l1834
+   275  0760  3A07               	xorlw	7	; case 52
+   276  0761  1903               	skipnz
+   277  0762  2F28               	goto	l1836
+   278  0763  3A01               	xorlw	1	; case 53
+   279  0764  1903               	skipnz
+   280  0765  2F2A               	goto	l1838
+   281  0766  3A03               	xorlw	3	; case 54
+   282  0767  1903               	skipnz
+   283  0768  2F2C               	goto	l1840
+   284  0769  3A01               	xorlw	1	; case 55
+   285  076A  1903               	skipnz
+   286  076B  2F2E               	goto	l1842
+   287  076C  3A0F               	xorlw	15	; case 56
+   288  076D  1903               	skipnz
+   289  076E  2F30               	goto	l1844
+   290  076F  3A01               	xorlw	1	; case 57
+   291  0770  1903               	skipnz
+   292  0771  2F32               	goto	l1846
+   293  0772  3A78               	xorlw	120	; case 65
+   294  0773  1903               	skipnz
+   295  0774  2F34               	goto	l1848
+   296  0775  3A03               	xorlw	3	; case 66
+   297  0776  1903               	skipnz
+   298  0777  2F36               	goto	l1850
+   299  0778  3A01               	xorlw	1	; case 67
+   300  0779  1903               	skipnz
+   301  077A  2F38               	goto	l1852
+   302  077B  3A07               	xorlw	7	; case 68
+   303  077C  1903               	skipnz
+   304  077D  2F3A               	goto	l1854
+   305  077E  3A01               	xorlw	1	; case 69
+   306  077F  1903               	skipnz
+   307  0780  2F3C               	goto	l1856
+   308  0781  3A03               	xorlw	3	; case 70
+   309  0782  1903               	skipnz
+   310  0783  2F3E               	goto	l1858
+   311  0784  2F3E               	goto	l1858
+   312  0785  120A  118A  2800   	ljmp	start
+   313  0788                     __end_of_main:	
+   314                           
+   315                           	psect	text36
+   316  0788                     __ptext36:	
+   317 ;; =============== function _main ends ============
+   318                           
+   319                           
+   320 ;; *************** function _DisplayOn7Segment *****************
+   321 ;; Defined at:
+   322 ;;		line 33 in file "C:\Users\Saeed\Desktop\PIC16F877A Free Running Counter\Code\Main.c"
+   323 ;; Parameters:    Size  Location     Type
+   324 ;;  ch              1    wreg     unsigned char 
+   325 ;; Auto vars:     Size  Location     Type
+   326 ;;  ch              1    0[COMMON] unsigned char 
+   327 ;; Return value:  Size  Location     Type
+   328 ;;		None               void
+   329 ;; Registers used:
+   330 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+   331 ;; Tracked objects:
+   332 ;;		On entry : 0/0
+   333 ;;		On exit  : 60/0
+   334 ;;		Unchanged: FFF9F/0
+   335 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   336 ;;      Params:         0       0       0       0       0
+   337 ;;      Locals:         1       0       0       0       0
+   338 ;;      Temps:          0       0       0       0       0
+   339 ;;      Totals:         1       0       0       0       0
+   340 ;;Total ram usage:        1 bytes
+   341 ;; Hardware stack levels used:    1
+   342 ;; This function calls:
+   343 ;;		Nothing
+   344 ;; This function is called by:
+   345 ;;		_main
+   346 ;; This function uses a non-reentrant model
+   347 ;;
+   348  0788                     _DisplayOn7Segment:	
+   349                           
+   350                           ; Regs used in _DisplayOn7Segment: [wreg-fsr0h+status,2+status,0]
+   351                           ;DisplayOn7Segment@ch stored from wreg
+   352  0788  00F0               	movwf	DisplayOn7Segment@ch
+   353                           
+   354                           ;Main.c: 34: switch(ch)
+   355  0789  2FCA               	goto	l1816
+   356  078A                     l1780:	
+   357  078A  303F               	movlw	63
+   358  078B  27FD               	call	PL2	;select bank 0
+   359  078C  0086               	movwf	6	;volatile
+   360  078D  0008               	return
+   361  078E                     l1782:	
+   362  078E  3006               	movlw	6
+   363  078F  27FD               	call	PL2	;select bank 0
+   364  0790  0086               	movwf	6	;volatile
+   365  0791  0008               	return
+   366  0792                     l1784:	
+   367  0792  305B               	movlw	91
+   368  0793  27FD               	call	PL2	;select bank 0
+   369  0794  0086               	movwf	6	;volatile
+   370  0795  0008               	return
+   371  0796                     l1786:	
+   372  0796  304F               	movlw	79
+   373  0797  27FD               	call	PL2	;select bank 0
+   374  0798  0086               	movwf	6	;volatile
+   375  0799  0008               	return
+   376  079A                     l1788:	
+   377  079A  3066               	movlw	102
+   378  079B  27FD               	call	PL2	;select bank 0
+   379  079C  0086               	movwf	6	;volatile
+   380  079D  0008               	return
+   381  079E                     l1790:	
+   382  079E  306D               	movlw	109
+   383  079F  27FD               	call	PL2	;select bank 0
+   384  07A0  0086               	movwf	6	;volatile
+   385  07A1  0008               	return
+   386  07A2                     l1792:	
+   387  07A2  307D               	movlw	125
+   388  07A3  27FD               	call	PL2	;select bank 0
+   389  07A4  0086               	movwf	6	;volatile
+   390  07A5  0008               	return
+   391  07A6                     l1794:	
+   392  07A6  3007               	movlw	7
+   393  07A7  27FD               	call	PL2	;select bank 0
+   394  07A8  0086               	movwf	6	;volatile
+   395  07A9  0008               	return
+   396  07AA                     l1796:	
+   397  07AA  307F               	movlw	127
+   398  07AB  27FD               	call	PL2	;select bank 0
+   399  07AC  0086               	movwf	6	;volatile
+   400  07AD  0008               	return
+   401  07AE                     l1798:	
+   402  07AE  306F               	movlw	111
+   403  07AF  27FD               	call	PL2	;select bank 0
+   404  07B0  0086               	movwf	6	;volatile
+   405  07B1  0008               	return
+   406  07B2                     l1800:	
+   407  07B2  3077               	movlw	119
+   408  07B3  27FD               	call	PL2	;select bank 0
+   409  07B4  0086               	movwf	6	;volatile
+   410  07B5  0008               	return
+   411  07B6                     l1802:	
+   412  07B6  307C               	movlw	124
+   413  07B7  27FD               	call	PL2	;select bank 0
+   414  07B8  0086               	movwf	6	;volatile
+   415  07B9  0008               	return
+   416  07BA                     l1804:	
+   417  07BA  3039               	movlw	57
+   418  07BB  27FD               	call	PL2	;select bank 0
+   419  07BC  0086               	movwf	6	;volatile
+   420  07BD  0008               	return
+   421  07BE                     l1806:	
+   422  07BE  305E               	movlw	94
+   423  07BF  27FD               	call	PL2	;select bank 0
+   424  07C0  0086               	movwf	6	;volatile
+   425  07C1  0008               	return
+   426  07C2                     l1808:	
+   427  07C2  3079               	movlw	121
+   428  07C3  27FD               	call	PL2	;select bank 0
+   429  07C4  0086               	movwf	6	;volatile
+   430  07C5  0008               	return
+   431  07C6                     l1810:	
+   432  07C6  3071               	movlw	113
+   433  07C7  27FD               	call	PL2	;select bank 0
+   434  07C8  0086               	movwf	6	;volatile
+   435  07C9  0008               	return
+   436  07CA                     l1816:	
+   437  07CA  0870               	movf	DisplayOn7Segment@ch,w
+   438                           
+   439                           ; Switch size 1, requested type "space"
+   440                           ; Number of cases is 16, Range of values is 48 to 70
+   441                           ; switch strategies available:
+   442                           ; Name         Instructions Cycles
+   443                           ; simple_byte           49    25 (average)
+   444                           ; direct_byte           80    11 (fixed)
+   445                           ; jumptable            263     9 (fixed)
+   446                           ;	Chosen strategy is simple_byte
+   447  07CB  3A30               	xorlw	48	; case 48
+   448  07CC  1903               	skipnz
+   449  07CD  2F8A               	goto	l1780
+   450  07CE  3A01               	xorlw	1	; case 49
+   451  07CF  1903               	skipnz
+   452  07D0  2F8E               	goto	l1782
+   453  07D1  3A03               	xorlw	3	; case 50
+   454  07D2  1903               	skipnz
+   455  07D3  2F92               	goto	l1784
+   456  07D4  3A01               	xorlw	1	; case 51
+   457  07D5  1903               	skipnz
+   458  07D6  2F96               	goto	l1786
+   459  07D7  3A07               	xorlw	7	; case 52
+   460  07D8  1903               	skipnz
+   461  07D9  2F9A               	goto	l1788
+   462  07DA  3A01               	xorlw	1	; case 53
+   463  07DB  1903               	skipnz
+   464  07DC  2F9E               	goto	l1790
+   465  07DD  3A03               	xorlw	3	; case 54
+   466  07DE  1903               	skipnz
+   467  07DF  2FA2               	goto	l1792
+   468  07E0  3A01               	xorlw	1	; case 55
+   469  07E1  1903               	skipnz
+   470  07E2  2FA6               	goto	l1794
+   471  07E3  3A0F               	xorlw	15	; case 56
+   472  07E4  1903               	skipnz
+   473  07E5  2FAA               	goto	l1796
+   474  07E6  3A01               	xorlw	1	; case 57
+   475  07E7  1903               	skipnz
+   476  07E8  2FAE               	goto	l1798
+   477  07E9  3A78               	xorlw	120	; case 65
+   478  07EA  1903               	skipnz
+   479  07EB  2FB2               	goto	l1800
+   480  07EC  3A03               	xorlw	3	; case 66
+   481  07ED  1903               	skipnz
+   482  07EE  2FB6               	goto	l1802
+   483  07EF  3A01               	xorlw	1	; case 67
+   484  07F0  1903               	skipnz
+   485  07F1  2FBA               	goto	l1804
+   486  07F2  3A07               	xorlw	7	; case 68
+   487  07F3  1903               	skipnz
+   488  07F4  2FBE               	goto	l1806
+   489  07F5  3A01               	xorlw	1	; case 69
+   490  07F6  1903               	skipnz
+   491  07F7  2FC2               	goto	l1808
+   492  07F8  3A03               	xorlw	3	; case 70
+   493  07F9  1903               	skipnz
+   494  07FA  2FC6               	goto	l1810
+   495  07FB  2F8A               	goto	l1780
+   496  07FC  0008               	return
+   497  07FD                     __end_of_DisplayOn7Segment:	
+   498  07FD                     PL2:	
+   499  07FD  1283               	bcf	3,5	;RP0=0, select bank0
+   500  07FE  1303               	bcf	3,6	;RP1=0, select bank0
+   501  07FF  0008               	return
+   502                           
+   503                           	psect	text37
+   504  0000                     __ptext37:	
+   505 ;; =============== function _DisplayOn7Segment ends ============
+   506                           
+   507  007E                     btemp	set	126	;btemp
+   508  007E                     wtemp0	set	126
+
+
+HI-TECH Software PICC Macro Assembler V9.83 build 10920 
+Symbol Table                                                                                   Sat Jan 23 19:03:20 2016
+
+                        u17 074C                        l1800 07B2                        l1810 07C6  
+                      l1802 07B6                        l1804 07BA                        l1820 0000  
+                      l1806 07BE                        l1830 0722                        l1822 0000  
+                      l1808 07C2                        l1816 07CA                        l1840 072C  
+                      l1832 0724                        l1824 0740                        l1850 0736  
+                      l1842 072E                        l1834 0726                        l1826 0000  
+                      l1818 0000                        l1780 078A                        l1852 0738  
+                      l1844 0730                        l1836 0728                        l1828 0720  
+                      l1790 079E                        l1782 078E                        l1854 073A  
+                      l1846 0732                        l1838 072A                        l1792 07A2  
+                      l1784 0792                        l1856 073C                        l1848 0734  
+                      l1794 07A6                        l1786 0796                        l1778 0000  
+                      l1858 073E                        l1796 07AA                        l1788 079A  
+                      l1798 07AE                        _main 0719                        btemp 007E  
+                      start 0000                       ?_main 0070                       _PORTB 0006  
+                     _TRISB 0086                       status 0003                       wtemp0 007E  
+              __end_of_main 0788                      ??_main 0071                      main@ch 0074  
+            __pcstackCOMMON 0070                  __pmaintext 0719        end_of_initialization 0715  
+       start_initialization 0715         DisplayOn7Segment@ch 0070           _DisplayOn7Segment 0788  
+        ?_DisplayOn7Segment 0070         ??_DisplayOn7Segment 0070                    __ptext35 0000  
+                  __ptext36 0788                    __ptext37 0000   __end_of_DisplayOn7Segment 07FD  
+             __size_of_main 006F  __size_of_DisplayOn7Segment 0075  
