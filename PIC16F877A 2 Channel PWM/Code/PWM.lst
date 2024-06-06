@@ -1,0 +1,447 @@
+
+
+HI-TECH Software PIC PRO Macro Assembler V9.83 build 10920 
+                                                                                               Sun Aug 10 16:43:00 2014
+
+HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
+     1                           	processor	16F877A
+     2                           	opt	pw 120
+     3                           	opt	pm
+     4                           	psect	config,global,class=CONFIG,delta=2
+     5                           	psect	text35,local,class=CODE,delta=2
+     6                           	psect	cinit,global,class=CODE,delta=2
+     7                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+     8                           	psect	maintext,global,class=CODE,delta=2
+     9                           	psect	text36,local,class=CODE,delta=2
+    10                           	psect	text38,local,class=CODE,delta=2
+    11                           	psect	pa_nodes,global,class=CODE,delta=2
+    12                           	dabs	1,0x7E,2
+    13  000A                     	;#
+    14                           
+    15                           	psect	config
+    16  2007  FF72               	dw	65394	;#
+    17                           
+    18                           	psect	text35
+    19  0000                     __ptext35:	
+    20  0017                     _CCP1CON	set	23
+    21  001D                     _CCP2CON	set	29
+    22  0015                     _CCPR1L	set	21
+    23  001B                     _CCPR2L	set	27
+    24  0012                     _T2CON	set	18
+    25  0092                     _PR2	set	146
+    26  0439                     _TRISC1	set	1081
+    27  043A                     _TRISC2	set	1082
+    28                           
+    29                           	psect	cinit
+    30  0799                     start_initialization:	
+    31  0799                     end_of_initialization:	
+    32                           ;End of C runtime variable initialization code
+    33                           
+    34  0799  0183               	clrf	3
+    35  079A  120A  118A  2F9D   	ljmp	_main	;jump to C main() function
+    36                           
+    37                           	psect	cstackCOMMON
+    38  0070                     __pcstackCOMMON:	
+    39  0070                     ?_InitPWM:	
+    40  0070                     ?_SetPWMDutyCycle:	
+    41                           ; 0 bytes @ 0x0
+    42                           
+    43  0070                     ?_main:	
+    44                           ; 0 bytes @ 0x0
+    45                           
+    46  0070                     SetPWMDutyCycle@DutyCycle:	
+    47                           ; 0 bytes @ 0x0
+    48                           
+    49                           
+    50                           ; 2 bytes @ 0x0
+    51  0070                     	ds	2
+    52  0072                     ??_SetPWMDutyCycle:	
+    53                           
+    54                           ; 0 bytes @ 0x2
+    55  0072                     	ds	2
+    56  0074                     SetPWMDutyCycle@CCP:	
+    57                           
+    58                           ; 1 bytes @ 0x4
+    59  0074                     	ds	1
+    60  0075                     ??_InitPWM:	
+    61  0075                     ??_main:	
+    62                           ; 0 bytes @ 0x5
+    63                           
+    64                           
+    65                           	psect	maintext
+    66  079D                     __pmaintext:	
+    67                           ; 0 bytes @ 0x5
+    68 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 0 stack 0
+    69 ;;Auto spaces:   Size  Autos    Used
+    70 ;; COMMON          14      5       5
+    71 ;; BANK0           80      0       0
+    72 ;; BANK1           80      0       0
+    73 ;; BANK3           96      0       0
+    74 ;; BANK2           96      0       0
+    75 ;;
+    76 ;; Pointer list with targets:
+    77 ;;
+    78 ;; Critical Paths under _main in COMMON
+    79 ;;
+    80 ;;   _main->_SetPWMDutyCycle
+    81 ;;   _InitPWM->_SetPWMDutyCycle
+    82 ;;
+    83 ;; Critical Paths under _main in BANK0
+    84 ;;
+    85 ;;   None.
+    86 ;;
+    87 ;; Critical Paths under _main in BANK1
+    88 ;;
+    89 ;;   None.
+    90 ;;
+    91 ;; Critical Paths under _main in BANK3
+    92 ;;
+    93 ;;   None.
+    94 ;;
+    95 ;; Critical Paths under _main in BANK2
+    96 ;;
+    97 ;;   None.
+    98 ;;
+    99 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   100 ;;
+   101 ;;
+   102 ;;Call Graph Tables:
+   103 ;;
+   104 ;; ---------------------------------------------------------------------------------
+   105 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   106 ;; ---------------------------------------------------------------------------------
+   107 ;; (0) _main                                                 0     0      0     150
+   108 ;;                            _InitPWM
+   109 ;;                    _SetPWMDutyCycle
+   110 ;; ---------------------------------------------------------------------------------
+   111 ;; (1) _InitPWM                                              0     0      0      75
+   112 ;;                    _SetPWMDutyCycle
+   113 ;; ---------------------------------------------------------------------------------
+   114 ;; (1) _SetPWMDutyCycle                                      5     3      2      75
+   115 ;;                                              0 COMMON     5     3      2
+   116 ;; ---------------------------------------------------------------------------------
+   117 ;; Estimated maximum stack depth 1
+   118 ;; ---------------------------------------------------------------------------------
+   119 ;; Call Graph Graphs:
+   120 ;; _main (ROOT)
+   121 ;;   _InitPWM
+   122 ;;     _SetPWMDutyCycle
+   123 ;;   _SetPWMDutyCycle
+   124 ;;
+   125 ;; Address spaces:
+   126 ;;Name               Size   Autos  Total    Cost      Usage
+   127 ;;BITCOMMON            E      0       0       0        0.0%
+   128 ;;EEDATA             100      0       0       0        0.0%
+   129 ;;NULL                 0      0       0       0        0.0%
+   130 ;;CODE                 0      0       0       0        0.0%
+   131 ;;COMMON               E      5       5       1       35.7%
+   132 ;;BITSFR0              0      0       0       1        0.0%
+   133 ;;SFR0                 0      0       0       1        0.0%
+   134 ;;BITSFR1              0      0       0       2        0.0%
+   135 ;;SFR1                 0      0       0       2        0.0%
+   136 ;;STACK                0      0       2       2        0.0%
+   137 ;;ABS                  0      0       0       3        0.0%
+   138 ;;BITBANK0            50      0       0       4        0.0%
+   139 ;;BITSFR3              0      0       0       4        0.0%
+   140 ;;SFR3                 0      0       0       4        0.0%
+   141 ;;BANK0               50      0       0       5        0.0%
+   142 ;;BITSFR2              0      0       0       5        0.0%
+   143 ;;SFR2                 0      0       0       5        0.0%
+   144 ;;BITBANK1            50      0       0       6        0.0%
+   145 ;;BANK1               50      0       0       7        0.0%
+   146 ;;BITBANK3            60      0       0       8        0.0%
+   147 ;;BANK3               60      0       0       9        0.0%
+   148 ;;BITBANK2            60      0       0      10        0.0%
+   149 ;;BANK2               60      0       0      11        0.0%
+   150 ;;DATA                 0      0       0      12        0.0%
+   151                           
+   152                           
+   153 ;; *************** function _main *****************
+   154 ;; Defined at:
+   155 ;;		line 22 in file "C:\Users\Saeed\Dropbox\Blog Posts\PIC16F877A 2 Channel PWM Code\Code\Main.c"
+   156 ;; Parameters:    Size  Location     Type
+   157 ;;		None
+   158 ;; Auto vars:     Size  Location     Type
+   159 ;;		None
+   160 ;; Return value:  Size  Location     Type
+   161 ;;		None               void
+   162 ;; Registers used:
+   163 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   164 ;; Tracked objects:
+   165 ;;		On entry : 17F/0
+   166 ;;		On exit  : 11F/0
+   167 ;;		Unchanged: FFE80/0
+   168 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   169 ;;      Params:         0       0       0       0       0
+   170 ;;      Locals:         0       0       0       0       0
+   171 ;;      Temps:          0       0       0       0       0
+   172 ;;      Totals:         0       0       0       0       0
+   173 ;;Total ram usage:        0 bytes
+   174 ;; Hardware stack levels required when called:    2
+   175 ;; This function calls:
+   176 ;;		_InitPWM
+   177 ;;		_SetPWMDutyCycle
+   178 ;; This function is called by:
+   179 ;;		Startup code after reset
+   180 ;; This function uses a non-reentrant model
+   181 ;;
+   182  079D                     _main:	
+   183                           
+   184                           ;Main.c: 23: InitPWM();
+   185                           
+   186                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   187  079D  120A  118A  27B5   	fcall	_InitPWM
+      +       120A  118A         
+   188                           
+   189                           ;Main.c: 25: SetPWMDutyCycle(1,127);
+   190  07A2  307F               	movlw	127
+   191  07A3  00F0               	movwf	?_SetPWMDutyCycle
+   192  07A4  3001               	movlw	1
+   193  07A5  01F1               	clrf	?_SetPWMDutyCycle+1
+   194  07A6  120A  118A  27CF   	fcall	_SetPWMDutyCycle
+      +       120A  118A         
+   195                           
+   196                           ;Main.c: 26: SetPWMDutyCycle(2,191);
+   197  07AB  30BF               	movlw	191
+   198  07AC  00F0               	movwf	?_SetPWMDutyCycle
+   199  07AD  3002               	movlw	2
+   200  07AE  01F1               	clrf	?_SetPWMDutyCycle+1
+   201  07AF  120A  118A  27CF   	fcall	_SetPWMDutyCycle
+      +       120A  118A         
+   202  07B4                     l690:	
+   203                           ;Main.c: 29: {
+   204                           
+   205  07B4  2FB4               	goto	l690
+   206  07B5                     __end_of_main:	
+   207                           
+   208                           	psect	text36
+   209  07B5                     __ptext36:	
+   210 ;; =============== function _main ends ============
+   211                           
+   212                           
+   213 ;; *************** function _InitPWM *****************
+   214 ;; Defined at:
+   215 ;;		line 11 in file "C:\Users\Saeed\Dropbox\Blog Posts\PIC16F877A 2 Channel PWM Code\Code\PWM.c"
+   216 ;; Parameters:    Size  Location     Type
+   217 ;;		None
+   218 ;; Auto vars:     Size  Location     Type
+   219 ;;		None
+   220 ;; Return value:  Size  Location     Type
+   221 ;;		None               void
+   222 ;; Registers used:
+   223 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   224 ;; Tracked objects:
+   225 ;;		On entry : 17F/0
+   226 ;;		On exit  : 17F/0
+   227 ;;		Unchanged: FFE80/0
+   228 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   229 ;;      Params:         0       0       0       0       0
+   230 ;;      Locals:         0       0       0       0       0
+   231 ;;      Temps:          0       0       0       0       0
+   232 ;;      Totals:         0       0       0       0       0
+   233 ;;Total ram usage:        0 bytes
+   234 ;; Hardware stack levels used:    1
+   235 ;; Hardware stack levels required when called:    1
+   236 ;; This function calls:
+   237 ;;		_SetPWMDutyCycle
+   238 ;; This function is called by:
+   239 ;;		_main
+   240 ;; This function uses a non-reentrant model
+   241 ;;
+   242  07B5                     _InitPWM:	
+   243                           
+   244                           ;PWM.c: 12: TRISC1 = 0;
+   245                           
+   246                           ; Regs used in _InitPWM: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   247  07B5  1683               	bsf	3,5	;RP0=1, select bank1
+   248  07B6  300C               	movlw	12
+   249  07B7  1087               	bcf	7,1
+   250                           
+   251                           ;PWM.c: 13: TRISC2 = 0;
+   252  07B8  1107               	bcf	7,2
+   253                           
+   254                           ;PWM.c: 14: CCP1CON = 0x0C;
+   255  07B9  1283               	bcf	3,5	;RP0=0, select bank0
+   256  07BA  0097               	movwf	23	;volatile
+   257                           
+   258                           ;PWM.c: 15: CCP2CON = 0x0C;
+   259  07BB  009D               	movwf	29	;volatile
+   260                           
+   261                           ;PWM.c: 17: PR2 = 0xFF;
+   262  07BC  30FF               	movlw	255
+   263  07BD  1683               	bsf	3,5	;RP0=1, select bank1
+   264  07BE  0092               	movwf	18	;volatile
+   265                           
+   266                           ;PWM.c: 18: T2CON = 0x01;
+   267  07BF  3001               	movlw	1
+   268  07C0  1283               	bcf	3,5	;RP0=0, select bank0
+   269  07C1  0092               	movwf	18	;volatile
+   270                           
+   271                           ;PWM.c: 20: SetPWMDutyCycle(1, 0);
+   272  07C2  01F0               	clrf	?_SetPWMDutyCycle
+   273  07C3  01F1               	clrf	?_SetPWMDutyCycle+1
+   274  07C4  27CF  120A  118A   	fcall	_SetPWMDutyCycle
+   275  07C7  3002               	movlw	2
+   276                           
+   277                           ;PWM.c: 21: SetPWMDutyCycle(2, 0);
+   278  07C8  01F0               	clrf	?_SetPWMDutyCycle
+   279  07C9  01F1               	clrf	?_SetPWMDutyCycle+1
+   280  07CA  27CF               	fcall	_SetPWMDutyCycle
+   281                           
+   282                           ;PWM.c: 23: T2CON |= 0x04;
+   283  07CB  1283               	bcf	3,5	;RP0=0, select bank0
+   284  07CC  1303               	bcf	3,6	;RP1=0, select bank0
+   285  07CD  1512               	bsf	18,2	;volatile
+   286  07CE  0008               	return
+   287  07CF                     __end_of_InitPWM:	
+   288  07CF                     __ptext37:	
+   289 ;; =============== function _InitPWM ends ============
+   290                           
+   291                           
+   292 ;; *************** function _SetPWMDutyCycle *****************
+   293 ;; Defined at:
+   294 ;;		line 32 in file "C:\Users\Saeed\Dropbox\Blog Posts\PIC16F877A 2 Channel PWM Code\Code\PWM.c"
+   295 ;; Parameters:    Size  Location     Type
+   296 ;;  CCP             1    wreg     unsigned char 
+   297 ;;  DutyCycle       2    0[COMMON] unsigned int 
+   298 ;; Auto vars:     Size  Location     Type
+   299 ;;  CCP             1    4[COMMON] unsigned char 
+   300 ;; Return value:  Size  Location     Type
+   301 ;;		None               void
+   302 ;; Registers used:
+   303 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+   304 ;; Tracked objects:
+   305 ;;		On entry : 11F/0
+   306 ;;		On exit  : 11F/0
+   307 ;;		Unchanged: FFE80/0
+   308 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   309 ;;      Params:         2       0       0       0       0
+   310 ;;      Locals:         1       0       0       0       0
+   311 ;;      Temps:          2       0       0       0       0
+   312 ;;      Totals:         5       0       0       0       0
+   313 ;;Total ram usage:        5 bytes
+   314 ;; Hardware stack levels used:    1
+   315 ;; This function calls:
+   316 ;;		Nothing
+   317 ;; This function is called by:
+   318 ;;		_main
+   319 ;;		_InitPWM
+   320 ;; This function uses a non-reentrant model
+   321 ;;
+   322  07CF                     _SetPWMDutyCycle:	
+   323                           
+   324                           ; Regs used in _SetPWMDutyCycle: [wreg-fsr0h+status,2+status,0]
+   325                           ;SetPWMDutyCycle@CCP stored from wreg
+   326  07CF  00F4               	movwf	SetPWMDutyCycle@CCP
+   327                           
+   328                           ;PWM.c: 33: DutyCycle = 4*DutyCycle;
+   329  07D0  1003               	clrc
+   330  07D1  0DF0               	rlf	SetPWMDutyCycle@DutyCycle,f
+   331  07D2  0DF1               	rlf	SetPWMDutyCycle@DutyCycle+1,f
+   332  07D3  1003               	clrc
+   333  07D4  0DF0               	rlf	SetPWMDutyCycle@DutyCycle,f
+   334  07D5  0DF1               	rlf	SetPWMDutyCycle@DutyCycle+1,f
+   335                           
+   336                           ;PWM.c: 35: switch(CCP)
+   337  07D6  2FE9               	goto	l2441
+   338  07D7                     l2435:	
+   339                           
+   340                           ;PWM.c: 39: CCPR1L = DutyCycle>>2;
+   341  07D7  27F2               	fcall	PL2	;call to abstracted procedure
+   342  07D8  0095               	movwf	21	;volatile
+   343                           
+   344                           ;PWM.c: 40: CCP1CON &= 0xCF;
+   345  07D9  30CF               	movlw	207
+   346  07DA  0597               	andwf	23,f	;volatile
+   347                           
+   348                           ;PWM.c: 41: CCP1CON |= (0x30&(DutyCycle<<4));
+   349  07DB  0E70               	swapf	SetPWMDutyCycle@DutyCycle,w
+   350  07DC  39F0               	andlw	240
+   351  07DD  3930               	andlw	48
+   352  07DE  0497               	iorwf	23,f	;volatile
+   353                           
+   354                           ;PWM.c: 42: break;
+   355  07DF  0008               	return
+   356  07E0                     l2437:	
+   357                           
+   358                           ;PWM.c: 46: CCPR2L = DutyCycle>>2;
+   359  07E0  27F2               	fcall	PL2	;call to abstracted procedure
+   360  07E1  009B               	movwf	27	;volatile
+   361                           
+   362                           ;PWM.c: 47: CCP2CON &= 0xCF;
+   363  07E2  30CF               	movlw	207
+   364  07E3  059D               	andwf	29,f	;volatile
+   365                           
+   366                           ;PWM.c: 48: CCP2CON |= (0x30&(DutyCycle<<4));
+   367  07E4  0E70               	swapf	SetPWMDutyCycle@DutyCycle,w
+   368  07E5  39F0               	andlw	240
+   369  07E6  3930               	andlw	48
+   370  07E7  049D               	iorwf	29,f	;volatile
+   371                           
+   372                           ;PWM.c: 49: break;
+   373  07E8  0008               	return
+   374  07E9                     l2441:	
+   375  07E9  0874               	movf	SetPWMDutyCycle@CCP,w
+   376                           
+   377                           ; Switch size 1, requested type "space"
+   378                           ; Number of cases is 2, Range of values is 1 to 2
+   379                           ; switch strategies available:
+   380                           ; Name         Instructions Cycles
+   381                           ; simple_byte            7     4 (average)
+   382                           ; direct_byte           17    11 (fixed)
+   383                           ; jumptable            263     9 (fixed)
+   384                           ;	Chosen strategy is simple_byte
+   385  07EA  3A01               	xorlw	1	; case 1
+   386  07EB  1903               	skipnz
+   387  07EC  2FD7               	goto	l2435
+   388  07ED  3A03               	xorlw	3	; case 2
+   389  07EE  1903               	skipnz
+   390  07EF  2FE0               	goto	l2437
+   391  07F0  2FF1               	goto	l1386
+   392  07F1                     l1386:	
+   393  07F1  0008               	return
+   394  07F2                     __end_of_SetPWMDutyCycle:	
+   395  07F2                     PL2:	
+   396  07F2  0871               	movf	SetPWMDutyCycle@DutyCycle+1,w
+   397  07F3  00F3               	movwf	??_SetPWMDutyCycle+1
+   398  07F4  0870               	movf	SetPWMDutyCycle@DutyCycle,w
+   399  07F5  00F2               	movwf	??_SetPWMDutyCycle
+   400  07F6  1003               	clrc
+   401  07F7  0CF3               	rrf	??_SetPWMDutyCycle+1,f
+   402  07F8  0CF2               	rrf	??_SetPWMDutyCycle,f
+   403  07F9  1003               	clrc
+   404  07FA  0CF3               	rrf	??_SetPWMDutyCycle+1,f
+   405  07FB  0CF2               	rrf	??_SetPWMDutyCycle,f
+   406  07FC  0872               	movf	??_SetPWMDutyCycle,w
+   407  07FD  1283               	bcf	3,5	;RP0=0, select bank0
+   408  07FE  1303               	bcf	3,6	;RP1=0, select bank0
+   409  07FF  0008               	return
+   410                           
+   411                           	psect	text38
+   412  0000                     __ptext38:	
+   413 ;; =============== function _SetPWMDutyCycle ends ============
+   414                           
+   415  007E                     btemp	set	126	;btemp
+   416  007E                     wtemp0	set	126
+
+
+HI-TECH Software PICC Macro Assembler V9.83 build 10920 
+Symbol Table                                                                                   Sun Aug 10 16:43:00 2014
+
+                     l690 07B4                       _PR2 0092                      l2441 07E9  
+                    l2433 0000                      l1386 07F1                      l2435 07D7  
+                    l1379 0000                      l2451 0000                      l2443 0000  
+                    l2437 07E0                      l2445 0000                      l2453 0000  
+                    l2447 0000                      l2449 0000                      _main 079D  
+                    btemp 007E                      start 0000           __end_of_InitPWM 07CF  
+         _SetPWMDutyCycle 07CF                     ?_main 0070                     _T2CON 0012  
+SetPWMDutyCycle@DutyCycle 0070                     status 0003                     wtemp0 007E  
+            __end_of_main 07B5                    ??_main 0075                    _CCPR1L 0015  
+                  _CCPR2L 001B                    _TRISC1 0439                    _TRISC2 043A  
+               ??_InitPWM 0075   __end_of_SetPWMDutyCycle 07F2            __pcstackCOMMON 0070  
+        ?_SetPWMDutyCycle 0070                __pmaintext 079D                   _CCP1CON 0017  
+                 _CCP2CON 001D                   _InitPWM 07B5      end_of_initialization 0799  
+     start_initialization 0799                  ?_InitPWM 0070  __size_of_SetPWMDutyCycle 0023  
+        __size_of_InitPWM 001A        SetPWMDutyCycle@CCP 0074         ??_SetPWMDutyCycle 0072  
+                __ptext35 0000                  __ptext36 07B5                  __ptext37 07CF  
+                __ptext38 0000             __size_of_main 0018  
