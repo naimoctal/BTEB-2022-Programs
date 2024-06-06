@@ -1,9 +1,10 @@
 /* Name         	: main.c
- * Purpose      	: Interfacing 7 segment Display with PIC Microcontroller
+ * Purpose      	: Main file for using LCD with PIC16F877A in 4bit mode
  * User	         	: N@IM_0CTAL
  * Github       	: https://github.com/naimoctal
- * Software			: MPLAB IDE v8.76
+ * Software	: MPLAB IDE v8.76
  */
+
 
 #include "Includes.h"
 
